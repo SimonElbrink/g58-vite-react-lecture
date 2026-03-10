@@ -9,12 +9,13 @@ import Pricing from "./2_props/Pricing";
 import Pricing2 from "./2_props/Pricing2";
 import Counter from "./3_state/Counter";
 import LikeButton from "./3_state/LikeButton";
+import PersonForm from "./3_state/PersonForm";
 
 
 function App() {
   return (
     <>
-    <LikeButton/>
+    <PersonForm/>
     </>
   );
 }
