@@ -7,11 +7,14 @@ import { FaExclamationTriangle } from "react-icons/fa";
 import StaticPricing from "./2_props/StaticPricing";
 import Pricing from "./2_props/Pricing";
 import Pricing2 from "./2_props/Pricing2";
+import Counter from "./3_state/Counter";
+import LikeButton from "./3_state/LikeButton";
+
 
 function App() {
   return (
     <>
-    <Pricing2/>
+    <LikeButton/>
     </>
   );
 }
