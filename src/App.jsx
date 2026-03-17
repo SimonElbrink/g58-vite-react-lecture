@@ -11,12 +11,14 @@ import Counter from "./3_state/Counter";
 import LikeButton from "./3_state/LikeButton";
 import PersonForm from "./3_state/PersonForm";
 import LifecycleDemo from "./4_hooks/LifecycleDemo";
+import StaticFlightBooking from "./4_hooks/StaticFlightBooking";
+import FlightBooking from "./4_hooks/FlightBooking";
 
 
 function App() {
   return (
     <>
-    <LifecycleDemo/>
+    <FlightBooking/>
     </>
   );
 }
