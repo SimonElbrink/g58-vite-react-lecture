@@ -151,60 +151,75 @@ const FlightBooking = () => {
       </div>
 
       {/* Results */}
-      <div className="row g-3">
-        {results.map((flight) => (
-          <div key={flight.id} className="col-12">
-            <div className="card shadow-sm border-0">
-              <div className="card-body d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center gap-3">
-                <div className="d-flex align-items-center gap-3">
-                  <div
-                    className="rounded-circle bg-primary bg-opacity-10 text-primary d-flex align-items-center justify-content-center"
-                    style={{ width: 56, height: 56, fontWeight: 700 }}
-                  >
-                    {flight.code.slice(0,2)}
-                  </div>
-                  <div>
-                    <div className="fw-semibold">
-                      {flight.airline} <span className="text-muted">• {flight.code}</span>
+
+      {results.length === 0 ? (
+        <div className="card card-body text-muted">
+          No flights found. Try adjusting your filters.
+        </div>
+      ) : (
+        <div className="row g-3">
+          {results.map((flight) => (
+            <div key={flight.id} className="col-12">
+              <div className="card shadow-sm border-0">
+                <div className="card-body d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center gap-3">
+                  <div className="d-flex align-items-center gap-3">
+                    <div
+                      className="rounded-circle bg-primary bg-opacity-10 text-primary d-flex align-items-center justify-content-center"
+                      style={{ width: 56, height: 56, fontWeight: 700 }}
+                    >
+                      {flight.code.slice(0, 2)}
                     </div>
-                    <div className="small text-muted">{flight.from} → {flight.to}</div>
-                    <div className="small">{fmtDate(flight.departAt)} • {fmtTime(flight.departAt)} • {fmtDur(flight.duration)}</div>
+                    <div>
+                      <div className="fw-semibold">
+                        {flight.airline}{" "}
+                        <span className="text-muted">• {flight.code}</span>
+                      </div>
+                      <div className="small text-muted">
+                        {flight.from} → {flight.to}
+                      </div>
+                      <div className="small">
+                        {fmtDate(flight.departAt)} • {fmtTime(flight.departAt)}{" "}
+                        • {fmtDur(flight.duration)}
+                      </div>
+                    </div>
                   </div>
-                </div>
-                <div className="d-flex flex-wrap gap-2">
-                  <span className="badge text-bg-light border">Economy</span>
-                  <span className="badge text-bg-warning">Medium flight</span>
-                  <span className="badge text-bg-secondary">
-                    Baggage: 1× cabin
-                  </span>
-                </div>
-                <div
-                  className="text-md-end ms-md-auto"
-                  style={{ minWidth: 220 }}
-                >
-                  <div className="fs-4 fw-bold">{fmtCurrency(flight.price)}</div>
-                  <div className="d-flex gap-2">
-                    <button
-                      className="btn btn-outline-secondary"
-                      disabled
-                      title="Disabled in this demo"
-                    >
-                      <FaInfoCircle className="me-1" /> Details
-                    </button>
-                    <button
-                      className="btn btn-primary"
-                      disabled
-                      title="Disabled in this demo"
-                    >
-                      <FaPlaneDeparture className="me-1" /> Book now
-                    </button>
+                  <div className="d-flex flex-wrap gap-2">
+                    <span className="badge text-bg-light border">Economy</span>
+                    <span className="badge text-bg-warning">Medium flight</span>
+                    <span className="badge text-bg-secondary">
+                      Baggage: 1× cabin
+                    </span>
+                  </div>
+                  <div
+                    className="text-md-end ms-md-auto"
+                    style={{ minWidth: 220 }}
+                  >
+                    <div className="fs-4 fw-bold">
+                      {fmtCurrency(flight.price)}
+                    </div>
+                    <div className="d-flex gap-2">
+                      <button
+                        className="btn btn-outline-secondary"
+                        disabled
+                        title="Disabled in this demo"
+                      >
+                        <FaInfoCircle className="me-1" /> Details
+                      </button>
+                      <button
+                        className="btn btn-primary"
+                        disabled
+                        title="Disabled in this demo"
+                      >
+                        <FaPlaneDeparture className="me-1" /> Book now
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 };
