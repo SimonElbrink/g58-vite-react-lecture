@@ -73,10 +73,44 @@ const ALL_FLIGHTS = [
     },
 ];
 
-
 export function searchFlights(params = {}) {
-    //Filter options is coming later
+  console.log("🔍 Searching flights with params:", params);
+  const from = (params.from || "").trim().toUpperCase();
+  const to = (params.to || "").trim().toUpperCase();
+  const date = (params.date || "").trim(); // expected "YYYY-MM-DD"
+  console.log("🔍 Search criteria:", { from, to, date });
 
-    return ALL_FLIGHTS.sort((a,b) => a.price - b.price);
+//  const filtered = ALL_FLIGHTS.filter((flight) => {
 
+//     if (from) {
+//       if (flight.from !== from) {
+//         return false;
+//       }
+//     }
+
+//     if (to) {
+//       if (flight.to !== to) {
+//         return false;
+//       }
+//     }
+
+//     if (date) {
+//       const flightDate = flight.departAt.slice(0, 10);
+
+//       if (flightDate !== date) {
+//         return false;
+//       }
+//     }
+
+//     return true;
+//   });
+
+
+      const filtered = ALL_FLIGHTS.filter(flight =>
+        (!from || flight.from === from) && // !from - checks if from is falsy (empty string, null, undefined, etc.) `!from``from`
+        (!to || flight.to === to) &&
+        (!date || flight.departAt.slice(0, 10) === date) // why slice(0, 10)? Because departAt is in ISO format "YYYY-MM-DDTHH:mm:ssZ"
+    );
+
+  return filtered.sort((a, b) => a.price - b.price);
 }
