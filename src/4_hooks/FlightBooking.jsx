@@ -11,6 +11,8 @@ const FlightBooking = () => {
 
   const [reload, setReload] = useState(false);
 
+  const [errors, setErrors] = useState({ from: "", to: "" });
+
   const [results, setResults] = useState([]);
 
   useEffect(() => {
@@ -21,6 +23,31 @@ const FlightBooking = () => {
     setResults(cheapestFlights);
   }, [reload]);
 
+  const validate = () => {
+    const _error = { from: "", to: "" };
+    const fromVal = from.trim();
+    const toVal = to.trim();
+    let flag = true;
+
+    if (!fromVal) {
+      _error.from = "From is required.";
+      flag = false;
+    }
+
+    if (!toVal) {
+      _error.to = "To is required.";
+      flag = false;
+    }
+
+    if (fromVal && toVal && fromVal.toUpperCase() === toVal.toUpperCase()) {
+      _error.to = "Destination must differ from origin.";
+      flag = false;
+    }
+
+    setErrors(_error);
+
+    return flag;
+  };
 
   const searchButtonHandler = () => {
     if (!validate()) return;
@@ -61,7 +88,7 @@ const FlightBooking = () => {
         <div className="card-body">
           <div className="row g-2 g-md-3 align-items-end">
             <div className="col-12 col-md-3">
-              <small className="text-danger"></small>
+              <small className="text-danger">{errors.from}</small>
               <div className="input-group input-group-lg">
                 <span className="input-group-text">From</span>
                 <input
@@ -74,7 +101,7 @@ const FlightBooking = () => {
             </div>
 
             <div className="col-12 col-md-3">
-              <small className="text-danger"></small>
+              <small className="text-danger">{errors.to}</small>
               <div className="input-group input-group-lg">
                 <span className="input-group-text">To</span>
                 <input
