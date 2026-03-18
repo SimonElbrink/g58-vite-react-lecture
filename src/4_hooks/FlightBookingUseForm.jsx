@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { FaInfoCircle, FaPlaneDeparture } from "react-icons/fa";
 import { searchFlights } from "./flightService";
 import { fmtCurrency, fmtDate, fmtDur, fmtTime } from "./formatters";
+import ThemeToggle from "./extra/ThemeToggle";
 
 const FlightBooking = () => {
   const {
@@ -55,9 +56,7 @@ const FlightBooking = () => {
         }}
       >
         <div className="position-absolute top-0 end-0 p-3">
-          <button type="button" className="btn btn-outline-light btn-sm">
-            Dark mode
-          </button>
+          <ThemeToggle/>
         </div>
         <h1 className="text-white fw-bold mb-1">Find your next flight</h1>
         <p className="text-white-50 mb-0">Fast. Simple. Beautiful.</p>
