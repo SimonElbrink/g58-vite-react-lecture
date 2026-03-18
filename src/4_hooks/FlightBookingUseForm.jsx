@@ -120,7 +120,7 @@ const FlightBooking = () => {
       {/* Toolbar: count + "Sort by" */}
       <div className="d-flex flex-wrap justify-content-between align-items-center mb-3">
         <div className="d-flex align-items-center gap-2">
-          <span className="badge rounded-pill text-bg-primary">results 5</span>
+          <span className="badge rounded-pill text-bg-primary">results {results.length}</span>
 
           <button
             className="btn btn-outline-primary btn-sm"
