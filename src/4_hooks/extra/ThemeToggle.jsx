@@ -5,7 +5,7 @@ const ThemeToggle = () => {
   const [theme, setTheme] = useState("light");
 
   useEffect(() => {
-    const savedTheme = localStorage.getItem("theme");
+    const savedTheme = sessionStorage.getItem("theme");
 
     setTheme(savedTheme);
 
@@ -18,7 +18,7 @@ const ThemeToggle = () => {
 
     document.documentElement.setAttribute("data-bs-theme", newtheme);
 
-    localStorage.setItem("theme", newtheme);
+    sessionStorage.setItem("theme", newtheme);
   };
 
   return (
