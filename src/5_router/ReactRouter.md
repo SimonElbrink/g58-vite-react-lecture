@@ -42,7 +42,7 @@ Modern React Router uses a **Data-Driven** approach. Here are the core component
 
 ### 4. Implementation Example: Basic Router
 
-In our **Router Demo** (`src/09-router-demo-js`), we defined our routes like this:
+In our **Router Demo** (`src/5_router/RouterDemo`), we defined our routes like this:
 
 ```jsx
 const router = createBrowserRouter([
@@ -66,7 +66,7 @@ Once you have defined your routes, you must provide them to your application usi
 *File: `src/main.jsx`*
 ```jsx
 import { RouterProvider } from 'react-router-dom';
-import RouterDemo from './09-router-demo-js/RouterDemo';
+import RouterDemo from './5_router/RouterDemo';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -81,7 +81,7 @@ createRoot(document.getElementById('root')).render(
 
 Instead of adding the `Navbar` and `Footer` to every single page, we use a **Root Layout**. The `<Outlet />` tells React Router exactly where the page content should be injected.
 
-*File: `src/09-router-demo-js/Layout.jsx`*
+*File: `src/5_router/Layout.jsx`*
 ```jsx
 const Layout = () => {
   return (
@@ -106,7 +106,7 @@ Dynamic routing allows one page to handle many different IDs. For example, a Use
 
 **Accessing the ID in the Component:**
 ```jsx
-import { useParams } from 'react-router-dom';
+import { useParams } from 'react-router';
 
 const UserProfile = () => {
   const { userId } = useParams(); // Extracts 'userId' from the URL
@@ -121,7 +121,7 @@ const UserProfile = () => {
 Sometimes you want to move the user to a new page automatically (e.g., after clicking "Send Message" or "Login").
 
 ```jsx
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router';
 
 const Contact = () => {
   const navigate = useNavigate();
